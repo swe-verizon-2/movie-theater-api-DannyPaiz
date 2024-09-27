@@ -8,6 +8,8 @@ const showRouter = express.Router()
 showRouter.post("/create", async (req, res) => {
     const createShow = await Show.create(req.body)
     res.json(createShow)
+    // res.json({data:createShow, message:req.body})
+
 })
 
 // GET ALL SHOWS
@@ -19,6 +21,15 @@ showRouter.get("/", async (req, res) => {
 showRouter.get("/:id", async (req, res) => {
     let oneShow = await Show.findByPk(req.params.id)
     res.json(showRouter)
+})
+
+showRouter.put("/update/:id", async (req, res) => {
+    let updatedShow = await Show.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+    res.json(updatedShow)
 })
 
 showRouter.delete("/remove/:id", async (req, res) => {

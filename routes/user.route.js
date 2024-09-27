@@ -24,7 +24,7 @@ userRouter.get("/:id", async (req, res) => {
 })
 
 // UPDATE ONE USER
-userRouter.put("update/:id", async (req, res) => {
+userRouter.put("/update/:id", async (req, res) => {
     const deleteUser = await User.destroy({
         where: {
             id: req.params.id
